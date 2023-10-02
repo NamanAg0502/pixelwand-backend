@@ -205,7 +205,3 @@ Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for more infor
 #### License
 
 This project is licensed under the MIT License.
-
-```
-
-```

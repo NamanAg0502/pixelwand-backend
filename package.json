@@ -1,9 +1,53 @@
 {
-  "name": "Team-Collaboration-and-Communication-Platform",
+  "name": "team-collaboration-and-communication-platform",
   "version": "1.0.0",
-  "description": "You are tasked with building a team collaboration and communication platform using Node.js. This platform will provide essential features for teams to collaborate effectively, including real-time chat, file sharing, project management, and integration with third-party tools.",
-  "main": "server.js",
-  "repository": "https://github.com/NamanAg0502/pixelwand-backend.git",
+  "description": "A Node.js-based team collaboration and communication platform with real-time chat, file sharing, project management, and third-party integrations.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "mocha tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NamanAg0502/pixelwand-backend.git"
+  },
   "author": "Naman Agrawal",
-  "license": "MIT"
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.1.4",
+    "express": "^4.18.2",
+    "express-validator": "^7.0.1",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.2.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22",
+    "mocha": "^9.1.1",
+    "chai": "^4.3.4"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": true
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "parserOptions": {
+      "ecmaVersion": 2021
+    },
+    "env": {
+      "node": true
+    },
+    "rules": {}
+  }
 }
