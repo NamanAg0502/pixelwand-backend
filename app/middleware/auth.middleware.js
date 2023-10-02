@@ -1,19 +1,23 @@
 import jwt from 'jsonwebtoken';
 
 // Authentication middleware
-export function authenticate(req, res, next) {
+export async function authenticate(req, res, next) {
+  // Get the token from the request cookies
+  const token = await req.header('authorization');
+  if (!token) {
+    return res
+      .status(401)
+      .json({ message: 'Authentication failed. JWT missing.' });
+  }
+
+  // Verify and decode the token
   try {
-    // Get the token from the request cookies
-    const token = req.cookies.token;
-
-    // Verify and decode the token
     const decoded = jwt.verify(token, 'secret-key');
-
-    // Attach the authenticated user to the request object
-    req.user = decoded;
-    next();
+    req.user = decoded.user; // Attach user data to the request
+    next(); // Proceed to the protected route
   } catch (error) {
-    console.error(error);
-    res.status(401).json({ message: 'Unauthorized' });
+    return res
+      .status(401)
+      .json({ message: 'Authentication failed. Invalid JWT.' });
   }
 }

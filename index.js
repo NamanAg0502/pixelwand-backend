@@ -4,9 +4,22 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import authRoutes from './app/routes/auth.routes.js';
+import chatRoutes from './app/routes/chat.routes.js';
+import projectRoutes from './app/routes/project.routes.js';
+import tasksRoutes from './app/routes/tasks.routes.js';
+import eventRoutes from './app/routes/calender.routes.js';
 import dotenv from 'dotenv';
+import { Server } from 'socket.io';
+import http from 'http';
+import socketHandler from './app/sockets/socket.handler.js';
 
 const app = express();
+const server = http.createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin: '*',
+  },
+});
 dotenv.config();
 const PORT = process.env.PORT || 4000;
 
@@ -52,6 +65,19 @@ connect(process.env.MONGODB_URI, {
 
 // Routes
 app.use('/auth', authRoutes);
+app.use('/chat', chatRoutes);
+app.use('/projects', projectRoutes);
+app.use('/tasks', tasksRoutes);
+app.use('/events', eventRoutes);
+
+// Socket.io Setup
+server.listen(8000, function () {
+  console.log(`listening on *:` + 8000);
+});
+
+io.on('connection', (socket) => {
+  socketHandler(socket, io); // Handle socket events in the socketHandler module
+});
 
 // Start the server
 app.listen(PORT, () => {

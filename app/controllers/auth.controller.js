@@ -59,14 +59,14 @@ export async function login(req, res) {
       { userId: user._id, role: user.role },
       'secret-key',
       {
-        expiresIn: '1h',
+        expiresIn: '1d',
       }
     );
 
     // Set the token as a cookie
     res.cookie('token', token, { httpOnly: true });
 
-    res.json({ message: 'Login successful', token });
+    res.json({ message: 'Login successful', token, user });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal server error' });
