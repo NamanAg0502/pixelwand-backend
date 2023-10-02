@@ -1,0 +1,9 @@
+{
+  "name": "Team-Collaboration-and-Communication-Platform",
+  "version": "1.0.0",
+  "description": "You are tasked with building a team collaboration and communication platform using Node.js. This platform will provide essential features for teams to collaborate effectively, including real-time chat, file sharing, project management, and integration with third-party tools.",
+  "main": "server.js",
+  "repository": "https://github.com/NamanAg0502/pixelwand-backend.git",
+  "author": "Naman Agrawal",
+  "license": "MIT"
+}
