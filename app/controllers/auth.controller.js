@@ -97,6 +97,18 @@ export async function getUser(req, res) {
   }
 }
 
+export async function getAllUsers(req, res) {
+  try {
+    // Retrieve all users from the database
+    const users = await User.find();
+
+    res.json({ message: 'Users retrieved successfully', users });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+}
+
 // User logout
 export async function logout(req, res) {
   try {

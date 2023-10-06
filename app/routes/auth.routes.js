@@ -6,6 +6,7 @@ import {
   login,
   logout,
   getUser,
+  getAllUsers,
 } from '../controllers/auth.controller.js';
 import { authenticate } from '../middleware/auth.middleware.js';
 
@@ -36,6 +37,8 @@ router.post(
 );
 
 router.post('/logout', logout);
+
+router.get('/all', getAllUsers);
 
 // router.use(authenticate);
 
